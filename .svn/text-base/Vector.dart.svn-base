@@ -1,0 +1,23 @@
+//Copyright Software By Numbers Ltd
+
+#library("sbnl:space");
+#import('Direction.dart');
+#import('SimpleVector2D.dart');
+
+/**
+ * Defines a vector (magnitude and direction) in 2d
+ */
+interface Vector2D default SimpleVector2D {
+
+  Direction getDirection(); // throws Vector2dException;
+  double getMagnitude(); // throwsVector2DException;
+  String asString(VectorAsString vectorAsString);
+}
+
+interface Vector2dException extends Exception {
+}
+
+/**
+ *Allows the vector to be externalised as a string
+ */
+typedef String VectorAsString(double magnitude, Direction direction);
