@@ -2,18 +2,19 @@
 
 #library("sbnl:space");
 #import('SimpleVector2D.dart');
+#import('Direction.dart');
 
 /**
  * Defines a vector (magnitude and direction) in 2d
  */
-interface Vector2D  {
+abstract class Vector2D  {
 
-  Direction getDirection(); // throws Vector2dException;
-  double getMagnitude(); // throwsVector2DException;
-  String asString(String f(Vector2D vector));
+  abstract Direction getDirection(); // throws Vector2dException;
+  abstract double getMagnitude(); // throwsVector2DException;
+  abstract String asString(String f(Vector2D vector));
 }
 
-interface Vector2dException extends Exception {
+class  Vector2dException implements Exception {
 }
 
 

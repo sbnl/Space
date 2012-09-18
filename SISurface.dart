@@ -7,37 +7,37 @@
  * Models a piece of paper that allows SI units (well meters at the moment)
  * to be drawn onto it.
  */
-interface SIDrawingSurface  {
+abstract class  SIDrawingSurface  {
 
 
-  void drawOutline([bool yes]);
+  abstract void drawOutline([bool yes]);
 
   //Draws a line between two points
   //@throws SIDrawingSurfaceException if the scale functions have not been set
-  void drawLine(Point2D point1, Point2D point2);
+  abstract void drawLine(Point2D point1, Point2D point2);
 
   /*
    * Draws an x and y axis
    *@throws SIDrawingSurfaceException if the scale functions have not been set
    */
-  void drawXAxis(Point2D origin, num graticuleInterval, num startValue, [String units]);
-  void drawYAxis(Point2D origin, num graticuleInterval, num startValue, [String units]);
+  abstract void drawXAxis(Point2D origin, num graticuleInterval, num startValue, [String units]);
+  abstract void drawYAxis(Point2D origin, num graticuleInterval, num startValue, [String units]);
 
   /*
    * Draws axis.
    */
-  void drawNewXAxis();
+  abstract void drawNewXAxis();
 
 
   /*
    * These set the scale functions
    */
-  void setScaleUnitsToPixels(ScaleUnitsToPixels scaleXUnitsToPixels, ScaleUnitsToPixels scaleYUnitsToPixels);
-  void setScalePixelsToUnits(ScalePixelsToUnits scaleXPixelsToUnits, ScalePixelsToUnits scaleYPixelsToUnits);
+  abstract void setScaleUnitsToPixels(ScaleUnitsToPixels scaleXUnitsToPixels, ScaleUnitsToPixels scaleYUnitsToPixels);
+  abstract void setScalePixelsToUnits(ScalePixelsToUnits scaleXPixelsToUnits, ScalePixelsToUnits scaleYPixelsToUnits);
 
 }
 
-interface SIDrawingSurfaceException extends Exception {
+class SIDrawingSurfaceException implements Exception {
 
 }
 

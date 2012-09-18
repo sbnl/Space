@@ -1,6 +1,7 @@
 //Copyright Software By Numbers Ltd
 
 #import('dart:html');
+#import('dart:math');
 #import('./packages/unittest/unittest.dart');
 #import('Point.dart');
 #import('SimplePoint.dart');
@@ -14,12 +15,12 @@
 
 void main() {
   SpaceTest spaceTest = new SpaceTest();
-  spaceTest.testPoint();
-  spaceTest.testDirection();
-  spaceTest.testDraw();
+  //spaceTest.testPoint();
+  //spaceTest.testDirection();
+  //spaceTest.testDraw();
   //spaceTest.testVector();
   //spaceTest.testDrawNegativeY();
-  //spaceTest.testSine();
+  spaceTest.testSine();
 }
 
 class SpaceTest {
@@ -27,7 +28,7 @@ class SpaceTest {
   void testPoint() {
     test("SimplePoint", () {
       Point2D point = new SimplePoint(10,10);
-      expect(point.magnitude()).equals(Math.sqrt(200));
+      expect(point.magnitude()).equals(sqrt(200));
     });
   }
 
@@ -182,10 +183,35 @@ class SpaceTest {
     siSurface.setScalePixelsToUnits(scaleXPixelsToUnits, scaleYPixelsToUnits);
     //outline
     siSurface.drawOutline();
-    siSurface.drawXAxis(new SimplePoint(0.0,0.0), 1, 0,'deg');
-    siSurface.drawYAxis(new SimplePoint(0.0,5.0), 5, 0, '');
-    //siSurface.drawYAxis(new SimplePoint(0.0,5.0), -5.0, 0, '');
-    Point2D point = new SimplePoint(0.0, 0.0);
+    siSurface.drawXAxis(new SimplePoint(0.0,0.0), 5, 0,'degs');
+    siSurface.drawYAxis(new SimplePoint(0.0,0.0), 5.0, 0, '');
+
+    Point2D plotPoint1 = new SimplePoint(0,1.0);
+    Point2D plotPoint2;
+    int count = 50;
+    int i = 0;
+    while(i<count) {
+      plotPoint2 = new SimplePoint(i, sin(i*2*PI/count) + 1.0);
+      siSurface.drawLine(plotPoint1, plotPoint2);
+      plotPoint1 = plotPoint2;
+      i++;
+    }
+    plotPoint1 = new SimplePoint(0,1.0);
+    i=0;
+    while(i<count) {
+      plotPoint2 = new SimplePoint(i, cos(i*2*PI/count) + 1.0);
+      siSurface.drawLine(plotPoint1, plotPoint2);
+      plotPoint1 = plotPoint2;
+      i++;
+    }
+    plotPoint1 = new SimplePoint(0,1.0);
+    i=0;
+    while(i<count) {
+      plotPoint2 = new SimplePoint(i, tan(i*2*PI/count) + 1.0);
+      siSurface.drawLine(plotPoint1, plotPoint2);
+      plotPoint1 = plotPoint2;
+      i++;
+    }
 
   }
 

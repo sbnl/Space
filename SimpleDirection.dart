@@ -3,6 +3,7 @@
 #library('sbnl:space');
 #import('Direction.dart');
 #import('Point.dart');
+#import('dart:math');
 
 class SimpleDirection implements Direction {
 
@@ -29,11 +30,11 @@ class SimpleDirection implements Direction {
     //we need to find the quadrant and the edge conditions
     if (x==0){_rad = 0.0; _deg = 0.0;}
     else if ((x==0)&&(y==0)) {_rad = 0.0; _deg=0.0;}
-    else if ((x>0)&&(y<0.000001) && (y>=0.0)){_rad = Math.PI/2; _deg = 90.0;}
-    else if ((x>0)&&(y>0)){_rad = Math.atan(x/y); _deg = radsToDegs(_rad);}
-    else if ((x>0)&&(y<0)){_rad = Math.atan(x/-y) + Math.PI/2;_deg = radsToDegs(_rad);}
-    else if ((x<0)&&(y<0)){_rad=Math.atan(-x/-y) + Math.PI;_deg = radsToDegs(_rad);}
-    else if ((x<0)&&(y>0)){_rad=Math.atan(-x/y) + Math.PI * 3/2;_deg = radsToDegs(_rad);}
+    else if ((x>0)&&(y<0.000001) && (y>=0.0)){_rad = PI/2; _deg = 90.0;}
+    else if ((x>0)&&(y>0)){_rad = atan(x/y); _deg = radsToDegs(_rad);}
+    else if ((x>0)&&(y<0)){_rad = atan(x/-y) + PI/2;_deg = radsToDegs(_rad);}
+    else if ((x<0)&&(y<0)){_rad=atan(-x/-y) + PI;_deg = radsToDegs(_rad);}
+    else if ((x<0)&&(y>0)){_rad=atan(-x/y) + PI * 3/2;_deg = radsToDegs(_rad);}
   }
 
   //Direction in degrees is 0 to 359.99 degrees.

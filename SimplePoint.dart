@@ -1,6 +1,7 @@
 //Copyright Software By Numbers Ltd
 #library('sbnl:space');
 #import('Point.dart');
+#import('dart:math');
 
 /**
  * Implements a point in 2d space.
@@ -17,7 +18,7 @@ class SimplePoint implements Point2D {
 
    String asString(String f(int x, int y, [int z])) => f(_x,_y);
 
-   num magnitude() => Math.sqrt(x*x + y*y);
+   num magnitude() => sqrt(x*x + y*y);
 
    num get x() => _x;
 
